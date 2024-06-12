@@ -1,6 +1,6 @@
 #get two inputs from the user
 #use math to calculate annual wage
-workdays=400
+workdays=350
 tax=.12
 def get_hours():
   user_hours=0
