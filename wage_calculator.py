@@ -1,39 +1,48 @@
-#get two inputs from the user
-#use math to calculate annual wage
-workdays=350
-tax=.12
-def get_hours():
-  user_hours=0
-  while(True):
-    try:
-      user_hours=float(input("Enter your daily hours:"))
-      if user_hours<=0:
-        print("ERROR: Enter a number of hours greater than 0")
-        continue
-      elif user_hours>=24:
-        print("ERROR: Enter a number of hours less than 24")
-        continue
-      else:
-        break
-    except:
-      print("ERROR: Please enter a number of hours greater than 0")
-  return user_hours
-def get_wage():
-  user_wage=0
-  while(True):
-    try:
-      user_wage=float(input("Enter your hourly wage:"))
-      if user_wage<=0:
-        print("ERROR: Enter a number for your wage greater than 0")
-        continue
-      else:
-        break
-    except:
-      print("ERROR: Please enter a number for your wage greater than 0")
-  return user_wage
-user_hours=get_hours()
-user_wage=get_wage()
-wage_before_tax=user_hours*user_wage*workdays
-tax_total=wage_before_tax*tax
-wage_post_tax=wage_before_tax-tax_total
-print(f"Pay Advice\n ----------\n Hours Worked:{user_hours}\n User Wage:${user_wage}\n Wage Before Taxes:${wage_before_tax:.2f}\n Tax Amount:${tax_total:.2f}\n Annual Wage After Taxes:${wage_post_tax:.2f}")
+def get_nonnegative_float_from_user(prompt, must_be_less_than_24):
+    while True:
+        try:
+            input_value = float(input(prompt))
+            if (input_value < 0):
+                print("Only nonnegative values are allowed. Please re-enter the value.\n")
+                continue
+            if(input_value > 24 and must_be_less_than_24):
+                print("ERROR: Hours worked must be less than 24")
+                continue
+            break
+        except ValueError:
+            print("Please enter a nonnegative numerical value.\n")
+            continue
+    
+    return input_value
+
+
+#declare known variable values
+#12% tax rate
+tax_rate = 0.12
+days_worked = 350
+another_calculation = True
+  
+#ask user for number of hours worked daily by calling the get_nonnegative_float_from_user function
+hours = get_nonnegative_float_from_user("Enter the number of hours worked daily: ", True)
+
+#ask user for hourly wage by calling the get_nonnegative_float_from_user function
+hourly_wage = get_nonnegative_float_from_user("Enter the hourly wage: ", False)
+
+#calculate annual wage
+annual_wage = hours * hourly_wage * days_worked
+
+#calculate tax amount
+tax_amount = tax_rate * annual_wage
+
+#calculate annual wage minus tax
+annual_wage_minus_tax = annual_wage - tax_amount
+
+#output results
+print(f"\nPay Advice")
+print(f"-------------")
+print(f"Hours Worked: {hours}")
+print(f"Hourly Wage: ${hourly_wage}")
+print(f"Wages Before Taxes: ${annual_wage:.2f}")
+print(f"Tax Amount: ${tax_amount:.2f}")
+print(f"Annual Wage After Taxes: ${annual_wage_minus_tax:.2f}")
+    
