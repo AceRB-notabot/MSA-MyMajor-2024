@@ -52,4 +52,11 @@ def main():
     car_info="ferarri,f-50,2021,500000,4.8"
     car_data=car_info.split(",")
     print(f"{car_data}")
+    #get the individual items from the resulting list
+    car_make=car_data[0]
+    car_model=car_data[1]
+    car_year=int(car_data[2])
+    car_price=float(car_data[3])
+    engine_size=float(car_data[4])
+    
 main()
