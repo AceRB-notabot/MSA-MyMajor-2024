@@ -1,0 +1,4 @@
+<built-in method now of type object at 0x00007FFBA45A0CD0>: There is an error in your data file at line 2
+<built-in method now of type object at 0x00007FFBA45A0CD0>: There is an error in your data file at line 3
+2024-06-24 11:30:28.776545: There is an error in your data file at line 2
+2024-06-24 11:30:28.777567: There is an error in your data file at line 3
